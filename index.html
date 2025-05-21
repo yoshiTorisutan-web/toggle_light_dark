@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" class="transition-colors duration-500">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toggle Light/Dark</title>
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen transition-colors duration-500 select-none"
+  >
+    <div
+      id="phone"
+      class="phone light"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80');
+      "
+    >
+      <!-- Flèches navigation fond -->
+      <div id="prevWallpaper" class="wallpaper-nav left" title="Fond précédent">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 mx-auto"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </div>
+      <div id="nextWallpaper" class="wallpaper-nav right" title="Fond suivant">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 mx-auto"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+
+      <!-- Horloge -->
+      <div class="clock" id="clock">00:00:00</div>
+
+      <!-- Toggle dark mode -->
+      <div
+        id="toggleWrapper"
+        class="toggle-wrapper"
+        role="switch"
+        aria-checked="false"
+        tabindex="0"
+        aria-label="Toggle dark mode"
+      >
+        <div class="track">
+          <!-- Icônes -->
+          <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 4.354a1 1 0 0 1 1 1V7a1 1 0 1 1-2 0V5.354a1 1 0 0 1 1-1zM4.22 7.22a1 1 0 0 1 1.42 0l1.42 1.42a1 1 0 0 1-1.42 1.42L4.22 8.64a1 1 0 0 1 0-1.42zM17.94 7.22a1 1 0 0 1 0 1.42l-1.42 1.42a1 1 0 0 1-1.42-1.42l1.42-1.42a1 1 0 0 1 1.42 0zM12 16.646a4.646 4.646 0 1 1 0-9.292 4.646 4.646 0 0 1 0 9.292zM12 21a1 1 0 0 1 1-1h-.002a1 1 0 0 1 0 2H13a1 1 0 0 1-1-1zM7 17a1 1 0 0 1 1-1v.002a1 1 0 0 1-2 0V16a1 1 0 0 1 1-1zm10-1a1 1 0 0 1 1 1v.002a1 1 0 0 1-2 0V17a1 1 0 0 1 1-1zM4.22 16.78a1 1 0 0 1 1.42-1.42l1.42 1.42a1 1 0 0 1-1.42 1.42l-1.42-1.42zm15.56 0a1 1 0 0 1 1.42 1.42l-1.42 1.42a1 1 0 0 1-1.42-1.42l1.42-1.42z"
+            />
+          </svg>
+          <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M21.75 15.89a9 9 0 1 1-10.73-11.59 7 7 0 1 0 10.73 11.59z"
+            />
+          </svg>
+        </div>
+        <div class="dot"></div>
+      </div>
+
+      <!-- Mini écran verrouillage -->
+      <div id="lockScreen" class="lock-screen">Écran verrouillé</div>
+
+      <!-- Menu options -->
+      <div id="menu" class="menu light" style="display: none">
+        <h2>Options</h2>
+        <button id="toggleLockBtn">Verrouiller/Déverrouiller</button>
+        <label>
+          <input type="checkbox" id="autoModeCheckbox" />
+          Mode automatique jour/nuit
+        </label>
+        <label>
+          <input type="checkbox" id="toggleLockScreen" /> Activer écran
+          verrouillage
+        </label>
+        <button id="closeMenuBtn">Fermer</button>
+      </div>
+    </div>
+
+    <!-- Bouton ouvrir menu -->
+    <button
+      id="openMenuBtn"
+      class="mt-4 px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
+    >
+      Options
+    </button>
+
+    <!-- Notification toast -->
+    <div id="toast" class="toast">Mode clair activé</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
